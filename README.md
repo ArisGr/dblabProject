@@ -15,6 +15,6 @@ app.config["MYSQL_PASSWORD"] = 'team139sql'
 
 using the user and password you have assigned for your database server (ours were "root" for the server username and "team139sql" for the server password)
 
--Use the command  python run.py and visit http://localhost:xxxx/ which will be printed at your output window/terminal
+-Use the command  python main.py to run the main.py file and visit http://localhost:xxxx/ which will be printed at your output window/terminal
 
 
