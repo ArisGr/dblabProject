@@ -2,7 +2,7 @@
 
 Install Instructions :
 
--Clone this repository using the command git clone https://github.com/ArisGr/dblabProject in a local working directory
+-Clone this repository using the command "git clone https://github.com/ArisGr/dblabProject" in a local working directory
 
 -Use the command pip install -r requirements.txt in said directory to download the needed libraries
 
