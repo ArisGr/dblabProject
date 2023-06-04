@@ -1,0 +1,398 @@
+
+{% extends 'index.html' %}
+{% block content %}
+
+
+<center>
+  <h1>Frequently asked questions</h1>
+</center>
+
+
+
+
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+
+              <center>
+              <form action="/queries" method="POST">
+                <label>Choose (executive, start date, duration):</label>
+                <select style="padding: 10px; background:#bc8f8f; border:none;" name="exe">
+                  <option value="">Any</option>
+                  {% for ex in ex %}
+                  <option value="{{ex.executive_name}}">{{ ex.executive_name }}</option>
+                  {% endfor %}
+                </select>
+                <select style="padding: 10px; background:#bc8f8f; border:none;" name="stad">
+                  <option value="">Any</option>
+                  {% for st_d in st_d %}
+                  <option value="{{st_d.y}}">{{ st_d.y }}</option>
+                  {% endfor %}
+                </select>
+                <select style="padding: 10px; background:#bc8f8f; border:none;" name="dur">
+                  <option value="">Any</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Submit">
+              </form>
+              </center>
+
+
+
+
+                <div class="card-body" id="card">
+                {% if q8|length == 0 %}
+                    <h1 style="margin-top: 5rem;">No data matching your criteria were found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <h3>Project</h3>
+                                <tr>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for q8 in q8 %}
+                                    <tr>
+                                        <td> {{ q8.title }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+
+                <div class="card-body" id="card">
+                {% if q9|length == 0 %}
+                    <h1 style="margin-top: 5rem;"></h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <h3>Researchers</h3>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Project</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for q9 in q9 %}
+                                    <tr>
+                                        <td> {{ q9.first_name }} </td>
+                                        <td> {{ q9.last_name }} </td>
+                                        <td> {{ q9.title }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+
+              <center>
+              <form action="/queries" method="POST">
+                <label>Choose a scientific field:</label>
+                <select style="padding: 10px; background:#bc8f8f; border:none;" name="sf">
+                  {% for scf in scf %}
+                  <option value="{{scf.scientific_field_name}}">{{ scf.scientific_field_name }}</option>
+                  {% endfor %}
+                </select>
+                <br><br>
+                <input type="submit" value="Submit">
+              </form>
+              </center>
+
+                <div class="card-body" id="card">
+                {% if q6|length == 0 %}
+                <h3>Funded projects in {{scf.scientific_field}}</h3>
+                    <h1 style="margin-top: 5rem;">No data matching your criteria were found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <h3>Funded projects in {{pr}}</h3>
+                                <tr>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for q6 in q6 %}
+                                    <tr>
+                                        <td> {{ q6.title }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+
+                <div class="card-body" id="card">
+                {% if q7|length == 0 %}
+                <h3>Funded projects in {{scf.scientific_field}}</h3>
+                    <h1 style="margin-top: 5rem;">No data matching your criteria were found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <h3>Researchers in {{pr}}</h3>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for q7 in q7 %}
+                                    <tr>
+                                        <td> {{ q7.first_name }} </td>
+                                        <td> {{ q7.last_name }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <div class="card-body" id="card">
+                {% if q5|length == 0 %}
+                <h3>Which organizations have undertaken the same amount of projects in a time period of two years with at least 10 projects annually?</h3>
+                    <h1 style="margin-top: 5rem;">No data Found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <h3>Which organizations have undertaken the same amount of projects in a time period of two years with at least 10 projects annually?</h3>
+                                <tr>
+                                    <th>Organization Names</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for q5 in q5 %}
+                                    <tr>
+                                        <td> {{ q5.organization_name }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="container">
+      {% include "flash_messages.html" %}
+      <div class="row" id="row">
+          <div class="col-md-12">
+              <div class="card" id="card-container">
+                  <div class="card-body" id="card">
+                  {% if q4|length == 0 %}
+                  <h3>Top-3 scientific field pairs present in projects(Both active and inactive)</h3>
+                      <h1 style="margin-top: 5rem;">No data Found!</h1>
+                  {% else %}
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                <h3>Top-3 scientific field pairs present in projects(Both active and inactive)</h3>
+                                  <tr>
+                                      <th>Scientific Field</th>
+                                      <th>Scientific Field</th>
+                                      <th>Number of Projects</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for q4 in q4 %}
+                                      <tr>
+                                          <td> {{ q4.sf }} </td>
+                                          <td> {{ q4.sf2 }} </td>
+                                          <td> {{ q4.num }} </td>
+                                      </tr>
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  {% endif %}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <div class="card-body" id="card">
+                {% if q3|length == 0 %}
+                <h3>Young researchers (age < 40 years old) working on the most projects which are active and the number of projects in which they participate</h3>
+                    <h1 style="margin-top: 5rem;">No data Found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <h3>Young researchers (age < 40 years old) working on the most projects which are active and the number of projects in which they participate</h3>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Number of Projects</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for q3 in q3 %}
+                                  {% if q3.num_of_proj > 2 %}
+                                    <tr>
+                                        <td> {{ q3.first_name }} </td>
+                                        <td> {{ q3.last_name }} </td>
+                                        <td> {{ q3.num_of_proj }} </td>
+                                    </tr>
+                                  {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <div class="card-body" id="card">
+                {% if q2|length == 0 %}
+                <h3>Top-5 executives of H.F.R.I. with the most funding to any company</h3>
+                    <h1 style="margin-top: 5rem;">No data Found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <h3>Top-5 executives of H.F.R.I. with the most funding to any company</h3>
+                                <tr>
+                                    <th>Executive Name</th>
+                                    <th>Organization</th>
+                                    <th>Amount given</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for q2 in q2 %}
+                                    <tr>
+                                        <td> {{ q2.executive_name }} </td>
+                                        <td> {{ q2.organization_name }} </td>
+                                        <td> {{ q2.money }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    {% include "flash_messages.html" %}
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <div class="card" id="card-container">
+                <div class="card-body" id="card">
+                {% if q1|length == 0 %}
+                <h3>Researchers working on 5 or more projects without deliverables</h3>
+                    <h1 style="margin-top: 5rem;">No data Found!</h1>
+                {% else %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <h3>Researchers working on 5 or more projects without deliverables</h3>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Number of projects</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for q1 in q1 %}
+                                    <tr>
+                                        <td> {{ q1.first_name }} </td>
+                                        <td> {{ q1.last_name }} </td>
+                                        <td> {{ q1.num_of_proj }} </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

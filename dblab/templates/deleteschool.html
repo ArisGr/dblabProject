@@ -1,0 +1,43 @@
+<h1>Insert the name of the  school library you want deleted down below : </h1>
+
+<td><tb><b>school_name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+
+        
+<form method="POST" action="">
+    {{form.school_name}}
+
+    {{form.submit}}
+    
+</form>
+
+
+
+<h1>ALL THE SCHOOL LIBRARIES ARE SHOWN DOWN BELOW. CHECK WHICH ONE WHO MIGHT WANT TO DELETE.</h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>school</u></b></tb></td>
+            <td><tb><b><u>street name</u></b></tb></td>
+            <td><tb><b><u>street number</u></b></tb></td>
+            <td><tb><b><u>postal code</u></b></tb></td>
+            <td><tb><b><u>City</u></b></tb></td>
+            <td><tb><b><u>Email</u></b></tb></td>
+            <td><tb><b><u>phone number</u></b></tb></td>
+            <td><tb><b><u>Principal</u></b></tb></td>
+            <td><tb><b><u>manager_username</u></b></tb></td>
+
+    {% for row in table  %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+            <td>{{row[6]}}</td>
+            <td>{{row[7]}}</td>
+            <td>{{row[8]}}</td>
+            <td>{{row[9]}}</td>
+        </tr>
+    {% endfor %}
+    </table>

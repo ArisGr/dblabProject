@@ -1,0 +1,177 @@
+{% extends 'index.html' %}
+
+{% block mainContent %}
+
+
+{% with messages = get_flashed_messages() %}
+    {%if messages %}
+        {% for msg in messages %}
+            <p>{{msg}}</p>
+        {% endfor %}
+    {% endif %} 
+{% endwith %}  
+
+<h1>You are Logged in!</h1>
+<a href="{{url_for('logout')}}">Logout</a><br>
+
+<a href="{{url_for('addschool')}}">Add a new School Libray to the System!</a><br>
+
+<a href="{{url_for('deleteschool')}}">Delete a school library the System!</a><br>
+
+<a href="{{url_for('verifymanager')}}">Verify a school library manager!</a><br>
+
+
+
+
+<h1>Your Info: </h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Username</u></b></tb></td>
+            <td><tb><b><u>First_name</u></b></tb></td>
+            <td><tb><b><u>Last_name</u></b></tb></td>
+            <td><tb><b><u>Password</u></b></tb></td>
+            <td><tb><b><u>Occupation</u></b></tb></td>
+            <td><tb><b><u>Age</u></b></tb></td>
+            
+    {% for row in info %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[7]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+
+<h1>NUMBER OF BOOKS LOANED BY EACH SCHOOL LIBRARY!</h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Total number of Loans</u></b></tb></td>
+            <td><tb><b><u>School</u></b></tb></td>
+    {% for row in table1 %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+
+    <h1>Authors and teachers affiliated with a genre : </h1>
+
+    <td><tb><b>GENRE</b></tb></td>
+            
+    <form method="POST" action="">
+        {{form.genre_type}}
+        {{form.submit}}
+        
+    </form>
+
+
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Name</u></b></tb></td>
+            <td><tb><b><u>Occupation</u></b></tb></td>
+       
+    {% for row in table2 %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+<h1>TEACHERS OF YOUNG AGE WITH MOST BOOKS LOANED!</h1>
+    <table border =0>
+        <thead>
+            <td><tb><b><u>First Name</u></b></tb></td>
+            <td><tb><b><u>Last Name</u></b></tb></td>
+            <td><tb><b><u>Number of books loaned</u></b></tb></td>
+       
+
+    {% for row in table3 %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+<h1>AUTHORS WHOSE BOOKS WERE NEVER LOANED!</h1>
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Author Name</u></b></tb></td>
+       
+
+    {% for row in table4 %}
+        <tr>
+            <td>{{row[0]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+<h1>MANAGERS  WITH THE SAME NUMBER OF BOOKS LOANED,WITH MORE THAN 10 LOANED BOOKS!</h1>
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Manager Name</u></b></tb></td>
+            <td><tb><b><u>Books Loaned</u></b></tb></td>
+       
+
+    {% for row in table5 %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+
+<h1>TOP-3 PAIRS OF BOOK GENRE!</h1>
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Genre1</u></b></tb></td>
+            <td><tb><b><u>Genre2</u></b></tb></td>
+            <td><tb><b><u>Number of Loaned books</u></b></tb></td>
+
+    {% for row in table6 %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>  
+        </tr>
+    {% endfor %}
+
+    </table>
+
+
+<h1>AUTHORS WHO HAVE WRITTEN AT LEAST 5 BOOKS LESS THAN THE AUTHOR WHO HAS WRITTEN THE MOST BOOKS!</h1>
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Author Name</u></b></tb></td>
+            <td><tb><b><u>Number of Books</u></b></tb></td>
+            <td><tb><b><u>Number of Books Written by Author with most books</u></b></tb></td>
+       
+
+    {% for row in table7 %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+{% endblock %}

@@ -1,0 +1,34 @@
+<h1>Enter isbn of the book that was returned,as the as the user it belonged to : </h1>
+
+<td><tb><b>isbn&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+<td><tb><b><u>username&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</u></b></tb></td>
+
+        
+<form method="POST" action="">
+    {{form.isbn}}
+    {{form.username}}
+    {{form.submit}}
+    
+</form>
+
+
+<h3>Client who have not returned the books they loaned.</h3>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Username</u></b></tb></td>
+            <td><tb><b><u>First name</u></b></tb></td>
+            <td><tb><b><u>Last name</u></b></tb></td>
+            <td><tb><b><u>Days due</u></b></tb></td>
+            <td><tb><b><u>Isbn</u></b></tb></td>
+    {% for row in table %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>

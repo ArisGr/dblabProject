@@ -1,0 +1,41 @@
+<h1>Insert info of the manager you wish to verify down below: </h1>
+
+<td><tb><b>Username&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+
+        
+<form method="POST" action="">
+    {{form.username}}
+
+    {{form.submit}}
+    
+</form>
+
+
+<h1>Managers who are not verified are shown down below. Use someone's username if you wish to verify him.</h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>username</u></b></tb></td>
+            <td><tb><b><u>first_name</u></b></tb></td>
+            <td><tb><b><u>last_name</u></b></tb></td>
+            <td><tb><b><u>password</u></b></tb></td>
+            <td><tb><b><u>occupation</u></b></tb></td>
+            <td><tb><b><u>verified?</u></b></tb></td>
+            <td><tb><b><u>age</u></b></tb></td>
+            <td><tb><b><u>school</u></b></tb></td>
+            
+       
+
+    {% for row in table  %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+            <td>{{row[7]}}</td>
+            <td>{{row[8]}}</td>
+        </tr>
+    {% endfor %}
+    </table>

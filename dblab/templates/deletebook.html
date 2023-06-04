@@ -1,0 +1,63 @@
+<h1>Insert info of the  school library you want deleted down below : </h1>
+
+<td><tb><b>isbn&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+
+        
+<form method="POST" action="">
+    {{form.isbn}}
+
+    {{form.submit}}
+    
+</form>
+
+
+<h1>ALL THE BOOKS PROVIDED BY THE LIBRARY YOU MANAGE ARE SHOWN DOWN BELOW. CHECK WHICH ONE YOU MIGHT WANT TO DELETE.</h1>
+
+<table border =0>
+    <thead>
+        <td><tb><b><u>ISBN</u></b></tb></td>
+        <td><tb><b><u>Title</u></b></tb></td>
+        <td><tb><b><u>Publisher</u></b></tb></td>
+        <td><tb><b><u>Page number</u></b></tb></td>
+        <td><tb><b><u>Language</u></b></tb></td>
+        <td><tb><b><u>Image</u></b></tb></td>
+        <td><tb><b><u>Genre</u></b></tb></td>
+        <td><tb><b><u>Author</u></b></tb></td>
+        <td><tb><b><u>Summary</u></b></tb></td>
+
+{% set ns = namespace(prev=0) %}
+{% for row in table %}
+
+    <tr>
+
+        {% if row[0] == ns.prev  %}
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{row[6]}}</td>
+        <td>{{row[7]}}</td>
+        <td></td>
+        {% else   %}
+        
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td><img src="{{row[5]}}"></td>
+        <td>{{row[6]}}</td>
+        <td>{{row[7]}}</td>
+        <td>{{row[8]}}</td>
+        {%- set ns.prev = row[0] %}
+        {% endif %}
+
+    </tr>
+
+
+
+{% endfor %}
+
+</table>

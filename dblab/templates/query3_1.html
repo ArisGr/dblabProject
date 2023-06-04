@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block mainContent %}
+<h1>Whatever i guess</h1>
+
+    <table border =0>
+        <thead>
+            <td><tb>isbn</tb></td>
+            <td><tb>title</tb></td>
+    
+    {% for row in table %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

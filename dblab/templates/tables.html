@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block mainContent %}
+<h1>Whatever i guess</h1>
+
+    <table border =0>
+        <thead>
+            <td><tb>isbn</tb></td>
+            <td><tb>title</tb></td>
+            <td><tb>publisher</tb></td>
+            <td><tb>page_number</tb></td>
+            <td><tb>language</tb></td>
+       
+
+    {% for row in table %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

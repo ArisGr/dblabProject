@@ -1,0 +1,35 @@
+<h1>Add your information down below : </h1>
+
+<td><tb><b>username&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+<td><tb><b>password&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+<td><tb><b>first_name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+<td><tb><b>last_name&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+<td><tb><b>Occupation&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+<td><tb><b>age&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+<td><tb><b>school_name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+        
+<form method="POST" action="">
+    {{form.username}}
+    {{form.passw}}
+    {{form.first_name}}
+    {{form.last_name}}
+    {{form.select}}
+    {{form.age}}
+    {{form.s_name}}
+    {{form.submit}}
+    
+</form>
+
+
+<h3>SCHOOL LIBRARIES THAT BELONG TO OUR SYSTEM! YOU CAN SIGN UP TO YOUR SCHOOL.</h3>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>School Name</u></b></tb></td>
+    {% for row in table %}
+        <tr>
+            <td>{{row[0]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>

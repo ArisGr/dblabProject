@@ -1,0 +1,136 @@
+{% extends 'index.html' %}
+
+{% block mainContent %}
+
+{% with messages = get_flashed_messages() %}
+    {%if messages %}
+        {% for msg in messages %}
+            <p>{{msg}}</p>
+        {% endfor %}
+    {% endif %} 
+{% endwith %}           
+
+<h1>You are Logged in!</h1>
+<a href="{{url_for('logout')}}">Logout</a><br>
+
+
+<a href="{{url_for('changeinfo')}}">Change info</a><br>
+
+<a href="{{url_for('applyloan')}}">Apply to loan a book here!</a><br>
+
+<a href="{{url_for('reserve')}}">Make a reservation for a book here!</a><br>
+
+<a href="{{url_for('review')}}">Review a book here!</a><br>
+
+
+<h1>Your Info: </h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Username</u></b></tb></td>
+            <td><tb><b><u>First_name</u></b></tb></td>
+            <td><tb><b><u>Last_name</u></b></tb></td>
+            <td><tb><b><u>Password</u></b></tb></td>
+            <td><tb><b><u>Occupation</u></b></tb></td>
+            <td><tb><b><u>Age</u></b></tb></td>
+            <td><tb><b><u>School Name</u></b></tb></td>
+    {% for row in info %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[7]}}</td>
+            <td>{{row[8]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+
+
+    <h2>Select Something : </h2>
+
+<td><tb><b>Title&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+<td><tb><b>Genre&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+<td><tb><b>Author&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b></tb></td>
+        
+<form method="POST" action="">
+    {{form.title}}
+    {{form.genre}}
+    {{form.author}}
+    {{form.submit}}
+    
+</form>
+
+<h1>ALL THE BOOKS PROVIDED BY YOUR SCHOOL!</h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>ISBN</u></b></tb></td>
+            <td><tb><b><u>Title</u></b></tb></td>
+            <td><tb><b><u>Publisher</u></b></tb></td>
+            <td><tb><b><u>Page number</u></b></tb></td>
+            <td><tb><b><u>Language</u></b></tb></td>
+            <td><tb><b><u>Image</u></b></tb></td>
+            <td><tb><b><u>Genre</u></b></tb></td>
+            <td><tb><b><u>Author</u></b></tb></td>
+            <td><tb><b><u>Summary</u></b></tb></td>
+
+    {% set ns = namespace(prev=0) %}
+    {% for row in table1 %}
+
+        <tr>
+
+            {% if row[0] == ns.prev  %}
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{row[6]}}</td>
+            <td>{{row[7]}}</td>
+            <td></td>
+            {% else   %}
+            
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td><img src="{{row[5]}}"></td>
+            <td>{{row[6]}}</td>
+            <td>{{row[7]}}</td>
+            <td>{{row[8]}}</td>
+            {%- set ns.prev = row[0] %}
+            {% endif %}
+ 
+        </tr>
+
+
+
+    {% endfor %}
+
+    </table>
+
+
+<h1>ALL THE BOOKS YOU HAVE LOANED!</h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>ISBN</u></b></tb></td>
+            <td><tb><b><u>Title</u></b></tb></td>
+    {% for row in table2 %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+   
+
+{% endblock %}

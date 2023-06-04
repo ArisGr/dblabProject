@@ -1,0 +1,145 @@
+{% extends 'index.html' %}
+
+{% block mainContent %}
+
+{% with messages = get_flashed_messages() %}
+    {%if messages %}
+        {% for msg in messages %}
+            <p>{{msg}}</p>
+        {% endfor %}
+    {% endif %} 
+{% endwith %}  
+
+<h1>You are Logged in!</h1>
+<a href="{{url_for('logout')}}">Logout</a><br>
+
+<a href="{{url_for('addbook')}}">Add a book to your School Library!</a><br>
+
+<a href="{{url_for('addauthor')}}">Add an author to a book!</a><br>
+
+<a href="{{url_for('addgenre')}}">Add a genre to a book!</a><br>
+
+<a href="{{url_for('addkeyword')}}">Add a keywoard to a book!</a><br>
+
+<a href="{{url_for('deletebook')}}">Check All the books your Library provides and Delete a book from your School Library!</a><br>
+
+<a href="{{url_for('verifyclient')}}">Check clients who wish to be verified!</a><br>
+
+<a href="{{url_for('deleteclient')}}">Check clients who you might wish to be deleted!</a><br>
+
+<a href="{{url_for('returned')}}">Confirm a book that was returned!</a><br>
+
+
+<h1>Your Info: </h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Username</u></b></tb></td>
+            <td><tb><b><u>First_name</u></b></tb></td>
+            <td><tb><b><u>Last_name</u></b></tb></td>
+            <td><tb><b><u>Password</u></b></tb></td>
+            <td><tb><b><u>Occupation</u></b></tb></td>
+            <td><tb><b><u>Age</u></b></tb></td>
+            <td><tb><b><u>School Name</u></b></tb></td>
+    {% for row in info %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[7]}}</td>
+            <td>{{row[8]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+<h1>ALL THE BOOKS YOUR SCHOOL PROVIDES!</h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>Title</u></b></tb></td>
+            <td><tb><b><u>Author</u></b></tb></td>
+            <td><tb><b><u>Genre</u></b></tb></td>
+            <td><tb><b><u>Copies</u></b></tb></td>
+
+    
+    {% set ns = namespace(prev=0) %}
+    {% for row in table1 %}
+        <tr>
+
+            {% if row[0] == ns.prev  %}
+            <td></td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td></td>
+            {% else   %}
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            {%- set ns.prev = row[0] %}
+            {% endif %}
+        </tr>
+    {% endfor %}
+
+    </table>
+
+
+    </table>
+
+<h1>USERS WHO HAVE NOT RETURNED THE BOOKS THEY LOANED!</h1>
+
+    <table border =0>
+        <thead>
+            <td><tb><b><u>First Name</u></b></tb></td>
+            <td><tb><b><u>Last Name</u></b></tb></td>
+            <td><tb><b><u>Days due</u></b></tb></td>
+            <td><tb><b><u>Book isbn</u></b></tb></td>
+    {% for row in table2 %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+
+    
+<h1>AVERAGE REVIEW SCORE BY USER!</h1>
+
+<table border =0>
+    <thead>
+        <td><tb><b><u>Average Review Score</u></b></tb></td>
+        <td><tb><b><u>First Name</u></b></tb></td>
+        <td><tb><b><u>Last Name</u></b></tb></td>
+{% for row in table3 %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+
+<h1>AVERAGE REVIEW SCORE BY BOOK GENRE!</h1>
+
+<table border =0>
+    <thead>
+        <td><tb><b><u>Average Review Score</u></b></tb></td>
+        <td><tb><b><u>Genre</u></b></tb></td>
+{% for row in table4 %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}
