@@ -77,3 +77,8 @@ using the user and password you have assigned for your database server (ours wer
 
 All the information above about clients/manager belong to a specific school  (3ο Γυμνασιο Λαρισας) in our database and are provided for the sole purpose of testing the app.
 
+---
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
