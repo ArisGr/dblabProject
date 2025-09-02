@@ -65,23 +65,14 @@ The project asked for:
   ```
 using the user and password you have assigned for your database server (ours were "root" for the server username and "team139sql" for the server password)
 
-- Use the command  python main.py to run the main.py file and visit http://localhost:xxxx/ which will be printed at your output window/terminal
+- Use the command:  
+  `python main.py` to run the `main.py` file and visit `http://localhost:xxxx/` which will be printed at your output window/terminal
 
-
-
-Username / Password for the application testing :
-
-
-Director : DirectorUsername / abcdef1
-
-
-client (teacher) : username6 / abcd6
-
-
-client (student) : username4 / abcd4
-
-
-manager : username5 / abcd5
+- **Username / Password for the application testing:**  
+  - Director: `DirectorUsername` / `abcdef1`  
+  - Client (teacher): `username6` / `abcd6`  
+  - Client (student): `username4` / `abcd4`  
+  - Manager: `username5` / `abcd5`
 
 
 All the information above about clients/manager belong to a specific school  (3ο Γυμνασιο Λαρισας) in our database and are provided for the sole purpose of testing the app.
