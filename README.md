@@ -21,6 +21,13 @@ The system was built to handle:
 
 ---
 
+## Team Members (team 139)
+
+- Αριστοτέλης Γρίβας (03119889)  
+- Ευάγγελος Μυργιώτης (03119085)  
+
+---
+
 ## Requirements
 
 The project asked for:
@@ -43,15 +50,7 @@ The project asked for:
 ---
 
 
-Team Members (team 139) :
-
-Αριστοτέλης Γρίβας (03119889)
-
-Ευάγγελος Μυργιώτης (03119085)
-
-
-
-Install Instructions :
+## Install Instructions :
 
 -Clone this repository using the command git clone https://github.com/ArisGr/dblabProject in a local working directory
 
