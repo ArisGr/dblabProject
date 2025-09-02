@@ -52,13 +52,13 @@ The project asked for:
 
 ## Install Instructions :
 
--Clone this repository using the command git clone https://github.com/ArisGr/dblabProject in a local working directory
+- Clone this repository using the command git clone https://github.com/ArisGr/dblabProject in a local working directory
 
--Use the command pip install -r requirements.txt in said directory to download the needed libraries
+- Use the command pip install -r requirements.txt in said directory to download the needed libraries
 
--Create the database using a DBSM that supports MySQL and run the scripts schema.sql and insert.sql 
+- Create the database using a DBSM that supports MySQL and run the scripts schema.sql and insert.sql 
 
--Change fields MYSQL_USER, MY_SQLPASSWORD at the lines shown below (lines 14,15 of main.py file) :
+- Change fields MYSQL_USER, MY_SQLPASSWORD at the lines shown below (lines 14,15 of main.py file) :
 
 app.config["MYSQL_USER"] = 'root'
 app.config["MYSQL_PASSWORD"] = 'team139sql'
