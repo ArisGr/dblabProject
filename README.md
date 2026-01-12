@@ -3,6 +3,9 @@
 This repository contains the completed semester project for the **Databases** course.  
 The project required the design and implementation of a database-driven system for managing **School Libraries in public schools**.  
 
+> **Note** The project materials are provided in Greek as originally required by the course.  
+The source code is fully in English, and the solution description is available in `Minesweeper_EN.pdf` for clarity.
+
 ---
 
 ## Project Overview
